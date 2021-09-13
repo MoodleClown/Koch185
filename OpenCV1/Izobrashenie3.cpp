@@ -19,16 +19,16 @@ Mat img;
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "Russian");
 		char filename[80];
-		cout << "Ââåäèòå èìÿ ôàéëà, â êîòîðûé õîòèòå âíåñòè èçìåíåíèÿ, è íàæìèòå Enter" << endl;
+		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿ Ã´Ã Ã©Ã«Ã , Ã¢ ÃªÃ®Ã²Ã®Ã°Ã»Ã© ÃµÃ®Ã²Ã¨Ã²Ã¥ Ã¢Ã­Ã¥Ã±Ã²Ã¨ Ã¨Ã§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã¿, Ã¨ Ã­Ã Ã¦Ã¬Ã¨Ã²Ã¥ Enter" << endl;
 		cin.getline(filename, 80);
-		cout << "Îòêðûòü ôàéë";
+		cout << "ÃŽÃ²ÃªÃ°Ã»Ã²Ã¼ Ã´Ã Ã©Ã«";
 		cout << filename << endl;
 
 		/*int height = 520;
 		int width = 840;*/
 		Mat img = imread(filename, 1);
-		namedWindow("Èñõîäíîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-		imshow("Èñõîäíîå èçîáðàæåíèå", img);
+		namedWindow("ÃˆÃ±ÃµÃ®Ã¤Ã­Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", WINDOW_AUTOSIZE);
+		imshow("ÃˆÃ±ÃµÃ®Ã¤Ã­Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", img);
 		
 	Mat src_gray;
 	Mat canny_output;
@@ -37,14 +37,14 @@ int main(int argc, char** argv) {
 
 	/*double otsu_thresh_val = threshold(src_gray, img, 0, 255, THRESH_BINARY | THRESH_OTSU);
 	double high_thresh_val = otsu_thresh_val, lower_thresh_val = otsu_thresh_val * 0.5;
-	cout<<"Ïîðîãîâîå çíà÷åíèå" << otsu_thresh_val;*/
+	cout<<"ÃÃ®Ã°Ã®Ã£Ã®Ã¢Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥" << otsu_thresh_val;*/
 	double lower_thresh_val = 135;
 	double high_thresh_val = lower_thresh_val * 1.65;
 	Canny(src_gray, canny_output, lower_thresh_val, high_thresh_val, 3);
 
 
-	namedWindow("Ñåðîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-	imshow("Ñåðîå èçîáðàæåíèå", canny_output);
+	namedWindow("Ã‘Ã¥Ã°Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", WINDOW_AUTOSIZE);
+	imshow("Ã‘Ã¥Ã°Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", canny_output);
 	imwrite("canny_output.jpg", canny_output);
 
 		waitKey(0);
