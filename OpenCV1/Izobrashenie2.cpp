@@ -19,28 +19,33 @@ Mat img;
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "Russian");
 		char filename[80];
-		cout << "Ââåäèòå èìÿ ôàéëà, â êîòîðûé õîòèòå âíåñòè èçìåíåíèÿ, è íàæìèòå Enter" << endl;
+		cout << "Введите имя файла, в который хотите внести изменения, и нажмите Enter" << endl;
 		cin.getline(filename, 80);
-		cout << "Îòêðûòü ôàéë";
+		cout << "Открыть файл";
 		cout << filename << endl;
 
-		int height = 520;
-		int width = 840;
+		/*int height = 520;
+		int width = 840;*/
 		Mat img = imread(filename, 1);
-		namedWindow("Èñõîäíîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-		imshow("Èñõîäíîå èçîáðàæåíèå", img);
+		namedWindow("Исходное изображение", WINDOW_AUTOSIZE);
+		imshow("Исходное изображение", img);
 		
-	/*Mat src_gray;
-	cvtColor(qwe, src_gray, COLOR_RGB2GRAY);
+	Mat src_gray;
+	Mat canny_output;
+	cvtColor(img, src_gray, COLOR_RGB2GRAY);
 	blur(src_gray, src_gray, Size(3, 3));
-	double otsu_thresh_val = otsu_thresh_val, lower_thresh_val = otsu_thresh_val * 0.5;
-	cout << otsu_thresh_val;
+
+	/*double otsu_thresh_val = threshold(src_gray, img, 0, 255, THRESH_BINARY | THRESH_OTSU);
+	double high_thresh_val = otsu_thresh_val, lower_thresh_val = otsu_thresh_val * 0.5;
+	cout<<"Пороговое значение" << otsu_thresh_val;*/
+	double lower_thresh_val = 135;
+	double high_thresh_val = lower_thresh_val * 1.65;
 	Canny(src_gray, canny_output, lower_thresh_val, high_thresh_val, 3);
 
-	char* source_grey_window = "Ñåðîå èçîáðàæåíèå";
-	namedWindow(source_grey_window, WINDOW_AUTOSIZE);
-	imshow(source_grey_window, canny_output);
-	imwrite("canny_output.jpg", canny_output);*/
+
+	namedWindow("Серое изображение", WINDOW_AUTOSIZE);
+	imshow("Серое изображение", canny_output);
+	imwrite("canny_output.jpg", canny_output);
 
 		waitKey(0);
 		system("pause");
