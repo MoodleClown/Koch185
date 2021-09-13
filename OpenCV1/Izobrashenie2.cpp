@@ -19,16 +19,16 @@ Mat img;
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "Russian");
 		char filename[80];
-		cout << "Ââåäèòå èìÿ ôàéëà, â êîòîðûé õîòèòå âíåñòè èçìåíåíèÿ, è íàæìèòå Enter" << endl;
+		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿ Ã´Ã Ã©Ã«Ã , Ã¢ ÃªÃ®Ã²Ã®Ã°Ã»Ã© ÃµÃ®Ã²Ã¨Ã²Ã¥ Ã¢Ã­Ã¥Ã±Ã²Ã¨ Ã¨Ã§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã¿, Ã¨ Ã­Ã Ã¦Ã¬Ã¨Ã²Ã¥ Enter" << endl;
 		cin.getline(filename, 80);
-		cout << "Îòêðûòü ôàéë";
+		cout << "ÃŽÃ²ÃªÃ°Ã»Ã²Ã¼ Ã´Ã Ã©Ã«";
 		cout << filename << endl;
 
 		int height = 520;
 		int width = 840;
 		Mat img = imread(filename, 1);
-		namedWindow("Èñõîäíîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-		imshow("Èñõîäíîå èçîáðàæåíèå", img);
+		namedWindow("ÃˆÃ±ÃµÃ®Ã¤Ã­Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", WINDOW_AUTOSIZE);
+		imshow("ÃˆÃ±ÃµÃ®Ã¤Ã­Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥", img);
 		
 	/*Mat src_gray;
 	cvtColor(qwe, src_gray, COLOR_RGB2GRAY);
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 	cout << otsu_thresh_val;
 	Canny(src_gray, canny_output, lower_thresh_val, high_thresh_val, 3);
 
-	char* source_grey_window = "Ñåðîå èçîáðàæåíèå";
+	char* source_grey_window = "Ã‘Ã¥Ã°Ã®Ã¥ Ã¨Ã§Ã®Ã¡Ã°Ã Ã¦Ã¥Ã­Ã¨Ã¥";
 	namedWindow(source_grey_window, WINDOW_AUTOSIZE);
 	imshow(source_grey_window, canny_output);
 	imwrite("canny_output.jpg", canny_output);*/
