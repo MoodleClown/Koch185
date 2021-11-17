@@ -19,16 +19,16 @@ Mat img;
 int main(int argc, char** argv) {
 	setlocale(LC_ALL, "Russian");
 		char filename[80];
-		cout << "Ââåäèòå èìÿ ôàéëà, â êîòîðûé õîòèòå âíåñòè èçìåíåíèÿ, è íàæìèòå Enter" << endl;//
+		cout << "Введите имя файла, в который хотите внести изменения, и нажмите Enter" << endl;//
 		cin.getline(filename, 80);
-		cout << "Îòêðûòü ôàéë";
+		cout << "Открыть файл";
 		cout << filename << endl;
 
 		/*int height = 520;
 		int width = 840;*/
 		Mat img = imread(filename, 1);
-		namedWindow("Èñõîäíîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-		imshow("Èñõîäíîå èçîáðàæåíèå", img);
+		namedWindow("Исходное изображение", WINDOW_AUTOSIZE);
+		imshow("Исходное изображение", img);
 		
 	Mat src_gray;
 	Mat canny_output;
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 
 	/*double otsu_thresh_val = threshold(src_gray, img, 0, 255, THRESH_BINARY | THRESH_OTSU);
 	double high_thresh_val = otsu_thresh_val, lower_thresh_val = otsu_thresh_val * 0.5;
-	cout<<"Ïîðîãîâîå çíà÷åíèå" << otsu_thresh_val;*/
+	cout<<"Пороговое значение" << otsu_thresh_val;*/
 	double lower_thresh_val = 135;
 	double high_thresh_val = lower_thresh_val * 1.65;
 	Canny(src_gray, canny_output, lower_thresh_val, high_thresh_val, 3);
@@ -62,13 +62,12 @@ int main(int argc, char** argv) {
 		mc[i] = Point2f(mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00);
 	}
 	for (int i = 0; i < contours.size(); i++) {
-		printf("Êîíòóð ¹ %d: öåíòð ìàññ - x = %.2à í =%.2f\n", i, mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00, arcLength(contours[i], true));
+		printf("Контур № %d: центр масс - x = %.2а н =%.2f\n", i, mu[i].m10 / mu[i].m00, mu[i].m01 / mu[i].m00, arcLength(contours[i], true));
 	}
-	namedWindow("Ñåðîå èçîáðàæåíèå", WINDOW_AUTOSIZE);
-	imshow("Ñåðîå èçîáðàæåíèå", canny_output);
+	namedWindow("Серое изображение", WINDOW_AUTOSIZE);
+	imshow("Серое изображение", canny_output);
 	imwrite("canny_output.jpg", canny_output);
 	
-	//4 часть начинается здесь 
 	Mat drawing = Mat::zeros(canny_output.size(), CV_8UC3);//Он создает объект Mat, заполненный нулями (то есть черное изображение), который имеет тот же размер, что и canny_output,
 	
 	for (int i = 0; i < contours.size(); i++) {
