@@ -68,15 +68,16 @@ int main(int argc, char** argv) {
 	imshow("Ñåðîå èçîáðàæåíèå", canny_output);
 	imwrite("canny_output.jpg", canny_output);
 	
-	Mat drawing = Mat::zeros(canny_output.size(), CV_8UC3);
+	//4 часть начинается здесь 
+	Mat drawing = Mat::zeros(canny_output.size(), CV_8UC3);//Он создает объект Mat, заполненный нулями (то есть черное изображение), который имеет тот же размер, что и canny_output,
 	
 	for (int i = 0; i < contours.size(); i++) {
 		Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
 		drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point());
-		circle(drawing, mc[i], 4, color, -1, 5, 0);
+		circle(drawing, mc[i], 4, color, -1, 5, 0);//весь блок нужен для того, чтобы ЧБ границы окрасились в разные цвета. 
 	}
-	namedWindow("Êîíòóðû", WINDOW_AUTOSIZE);
-	imshow("Êîíòóðû", drawing);
+	namedWindow("Контуры", WINDOW_AUTOSIZE);
+	imshow("Контуры", drawing);
 
 		waitKey(1);
 		system("pause");
